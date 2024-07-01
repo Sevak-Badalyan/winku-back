@@ -58,7 +58,7 @@ class FriendsModel extends Model {
     
 
     
-    static async getFriendsMessage(id) {
+    static async getFriendsMessage(id) {                        //el petq chi
         const data = await FriendsModel.query()
             .select(
                 'friendships.friendships_id',
@@ -118,7 +118,7 @@ class FriendsModel extends Model {
                     messages_id: row.messages_id,
                     sender_id: row.sender_id,
                     receiver_id: row.receiver_id,
-                    message: row.message,  // corrected from 'msgText'
+                    message: row.message, 
                     created_at: row.message_created_at,
                     updated_at: row.message_updated_at
                 });
@@ -195,9 +195,7 @@ class FriendsModel extends Model {
             .select('id', 'username', 'profileImg', 'name', 'surname', 'email', 'status', 'position')
             .whereNot('id', user_id)
             .whereNotIn('id', Array.from(friendIds))
-            // .limit(limit)
-            //     .offset(this.currentOffset); 
-
+            
         return peoples;
     }
 

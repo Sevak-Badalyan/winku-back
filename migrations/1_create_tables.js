@@ -3,6 +3,8 @@ import knexConfigs from '../knex.configs';
 import { LoggerUtil } from '../src/utils'
 
 async function up(pg) {
+  await pg.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
+
   return await pg.schema
     .createTable('users', (table) => {
       table.increments('id').primary();
@@ -101,32 +103,32 @@ async function up(pg) {
     })
 
 
+    .createTable('groups', (table) => {
+      table.uuid('group_id').primary().defaultTo(pg.raw('uuid_generate_v4()')).notNullable().unique();
+      table.string('group_name').notNullable();
+      table.dateTime('created_at');
+      table.dateTime('updated_at');
+    })
+    .createTable('group_members', (table) => {
+      table.increments('member_id').primary();
+      table.uuid('group_id').notNullable().references('group_id').inTable('groups').onDelete('CASCADE');
+      table.integer('user_id').unsigned().notNullable().references('id').inTable('users').onDelete('CASCADE');
+      table.dateTime('created_at');
+      table.dateTime('updated_at');
+    })
+    .createTable('group_messages', (table) => {
+      table.increments('message_id').primary();
+      table.uuid('group_id').notNullable().references('group_id').inTable('groups').onDelete('CASCADE');
+      table.string("author").notNullable();
+      table.string("name");
+      table.string("surname");
+      table.string("profileImg");
 
-    // .createTable('groups', (table) => {
-    //   table.increments('group_id').primary();
-    //   table.string('group_name').notNullable();
-    //   table.integer('created_by').unsigned().notNullable().references('id').inTable('users').onDelete('CASCADE');
-    //   table.text('description');
-    //   table.dateTime('created_at');
-    //   table.dateTime('updated_at');
-    // })
-
-    // .createTable('group_members', (table) => {
-    //   table.increments('member_id').primary();
-    //   table.integer('group_id').unsigned().notNullable().references('group_id').inTable('groups').onDelete('CASCADE');
-    //   table.integer('user_id').unsigned().notNullable().references('id').inTable('users').onDelete('CASCADE');
-    //   // table.enu('role', ['admin', 'member']).defaultTo('member');
-    //   table.dateTime('joined_at').defaultTo(knex.fn.now());
-    // })
-
-    // .createTable('group_messages', (table) => {
-    //   table.increments('message_id').primary();
-    //   table.integer('group_id').unsigned().notNullable().references('group_id').inTable('groups').onDelete('CASCADE');
-    //   table.integer('sender_id').unsigned().notNullable().references('id').inTable('users').onDelete('CASCADE');
-    //   table.text('message_content').notNullable();
-    //   table.dateTime('created_at');
-    //   table.dateTime('updated_at');
-    // })
+      table.integer('sender_id').unsigned().notNullable().references('id').inTable('users').onDelete('CASCADE');
+      table.text('message').notNullable();
+      table.dateTime('created_at');
+      table.dateTime('updated_at');
+    });
 
 }
 

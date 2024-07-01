@@ -16,7 +16,6 @@ class ImageUploadMiddleware {
 
             const storage = multer.diskStorage({
                 destination(req, file, cb) {
-                    // Ensure the base upload directory exists
                     fs.mkdirSync(baseUploadDir, { recursive: true });
                     const id = req.body.id;
                     const type = req.body.type;
@@ -51,7 +50,6 @@ class ImageUploadMiddleware {
                         });
                     }
 
-                    // Set the destination to the new folder
                     cb(null, newFolder);
                 },
                 filename(req, file, cb) {
@@ -62,9 +60,8 @@ class ImageUploadMiddleware {
                     const fileName = uuidv4() + ext;
                     req.uploadedFileName = fileName; 
                     cb(null, fileName);
-                    // Return the path of the uploaded image
                     const imagePath = `${baseUploadDir}/${req.body.id}/${req.body.type}/${fileName}`;
-                    req.uploadedImagePath = imagePath; // Attach imagePath to request object
+                    req.uploadedImagePath = imagePath; 
                 }
             });
 
@@ -77,7 +74,6 @@ class ImageUploadMiddleware {
                         return res.status(400).json({ error: err.message });
                     }
 
-                    // Build the imagePath to be stored in the database
                     const { id, type } = req.body;
                     const imagePath = `upload/${id}/${type}/${req.uploadedFileName}`;
                     console.log("type", type);
@@ -107,7 +103,6 @@ class ImageUploadMiddleware {
 
             const storage = multer.diskStorage({
                 destination(req, file, cb) {
-                    // Ensure the base upload directory exists
                     fs.mkdirSync(baseUploadDir, { recursive: true });
                     const user_id = req.body.user_id;
                     const type = req.body.type;
@@ -133,9 +128,8 @@ class ImageUploadMiddleware {
                     const fileName = uuidv4() + ext;
                     req.uploadedFileName = fileName; 
                     cb(null, fileName);
-                    // Return the path of the uploaded image
                     const imagePath = `${baseUploadDir}/${req.body.user_id}/${req.body.type}/${fileName}`;
-                    req.uploadedImagePath = imagePath; // Attach imagePath to request object
+                    req.uploadedImagePath = imagePath; 
                 }
             });
 
@@ -148,7 +142,6 @@ class ImageUploadMiddleware {
                         return res.status(400).json({ error: err.message });
                     }
 
-                    // Build the imagePath to be stored in the database
                     const { user_id, type ,postText} = req.body;
                     const imagePath = `upload/${user_id}/${req.uploadedFileName}`;
                     console.log("type", type);
@@ -158,8 +151,6 @@ class ImageUploadMiddleware {
                     console.log(`User ID: ${user_id}`);
 
             try {
-                // await PostsModel.addPosts(user_id, type, postText,imagePath);
-                // res.json({ imagePath ,postText});
                 await PostsModel.addPosts({
                     user_id: user_id,
                     postText: postText,

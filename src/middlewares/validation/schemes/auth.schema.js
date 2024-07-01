@@ -14,7 +14,7 @@ const AuthSchema = {
       password: Joi.string().min(4).required(),
       name: Joi.string().min(3).required(),
       surname: Joi.string().min(3).required(),
-      email: Joi.string().min(5).required(),
+      email: Joi.string().min(6).required(),
       role: Joi.string().valid('User', 'Admin').required()
     })
   }

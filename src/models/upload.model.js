@@ -2,9 +2,7 @@ import { Model } from 'objection';
 // import knex from 'knex';
 import knexConfigs from '../../knex.configs';
 
-// const pg = knex(knexConfigs);
-// import { ErrorsUtil, CryptoUtil } from '../utils';
-// import knexConfigs from '../../knex.configs';
+
 
 class uploadModel extends Model {
     static get idColumn() { return 'id'; }

@@ -3,6 +3,7 @@ import { UserModel, AdminModels, EmployersModel } from "../models";
 import { ErrorsUtil, CryptoUtil } from "../utils";
 import nodemailer from "nodemailer";
 import config from "../config/variables.config";
+import { log } from "handlebars/runtime";
 
 const { AUTH } = config;
 
@@ -113,4 +114,40 @@ export default class AuthService {
     const newUser = await UserModel.addUser(username, password, name, surname, email, role);
     return newUser;
   }
+
+
+//nodemeiler
+
+ 
+static async nodeMailer() {
+  const transporter = nodemailer.createTransport({
+    host: "smtp.ethereal.email",
+    port: 587,
+    auth: {
+      user: "annabelle.hoeger23@ethereal.email",
+      pass: "2wnHQZ4w6QcsFFFaZV",
+    },
+  });
+
+  const sendMail = async (message) => {
+    try {
+      const info = await transporter.sendMail(message);
+      console.log("Email sent:", info);
+      return info;
+    } catch (err) {
+      console.error("Error sending email:", err);
+      throw err;
+    }
+  };
+
+  return {
+    sendMail,
+  };
+}
+
+
+
+
+
+
 }

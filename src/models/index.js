@@ -8,6 +8,10 @@ export {default as uploadModel} from './upload.model';
 export {default as FriendsModel} from './friends.model';
 export {default as FriendsRequestsModel} from './friends.requests.model';
 export {default as MessagesModel} from './messages.model';
+export {default as GroupsModel} from './groups.model';
+export {default as MembersModel} from './members.model';
+export {default as GroupMessagesModel} from './group.messages.model';
+
 
 
 

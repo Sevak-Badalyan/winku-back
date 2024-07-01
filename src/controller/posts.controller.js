@@ -25,6 +25,16 @@ export default class PostsController {
         }
     }
 
+    static async delPostsById(req, res, next) {
+        const { posts_id} = req.params;
+        try {
+            const text = await PostsService.delPostsById(posts_id);
+            SuccessHandlerUtil.handleGet(res, req, text)
+        } catch (error) {
+            next(error);
+        }
+    }
+
     static async getPhotosById(req, res, next) {
         const { user_id } = req.params;
         try {

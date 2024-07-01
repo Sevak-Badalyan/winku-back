@@ -33,6 +33,8 @@ class PostsModel extends Model {
     static currentOffset = 0;
 
 
+
+
 static async getPosts(id) {
   try {
     const limit = 3;
@@ -45,6 +47,12 @@ static async getPosts(id) {
       .offset(this.currentOffset);
 
     const postIdArray = postIds.map(post => post.posts_id);
+
+    if (postIdArray.length === 0) {
+      this.currentOffset = 0;
+      console.log("Reached end of posts, resetting offset.");
+      return [];
+    }
 
     const rawData = await PostsModel.query()
       .select(
@@ -79,7 +87,7 @@ static async getPosts(id) {
       .leftJoin('users as commentUsers', 'comments.user_id', 'commentUsers.id')
       .leftJoin('replies', 'replies.comments_id', 'comments.comments_id')
       .leftJoin('users as replyUsers', 'replies.user_id', 'replyUsers.id')
-      .whereIn('posts.posts_id', postIdArray) 
+      .whereIn('posts.posts_id', postIdArray)
       .orderBy('posts.created_at', 'desc')
       .orderBy('comments.created_at', 'asc')
       .orderBy('replies.created_at', 'asc');
@@ -132,9 +140,7 @@ static async getPosts(id) {
             userSurname: row.replyUserSurname,
             replyCreatedAt: row.replyCreatedAt
           });
-          postEntry.commentCount++; 
-
-          
+          postEntry.commentCount++;
         }
       }
     });
@@ -149,7 +155,7 @@ static async getPosts(id) {
     if (result.length === 0) {
       this.currentOffset = 0;
       console.log("Reached end of posts, resetting offset and fetching again.");
-      return this.getPosts(); 
+      return this.getPosts(id); 
     }
 
     return result.reverse(); 
@@ -158,6 +164,8 @@ static async getPosts(id) {
     throw error;
   }
 }
+
+
 
 
 static async getPostsById(user_id) {
@@ -268,6 +276,26 @@ static async getPostsById(user_id) {
       throw error;
     }
   }
+  
+
+  static async delPostsById(posts_id) {
+    try {
+      
+      const result = await PostsModel.query().deleteById(posts_id);
+  
+      if (result) {
+        console.log(`Successfully deleted post with ID ${posts_id}`);
+        return { success: true, message: 'Post deleted successfully' };
+      } else {
+        console.log(`Post with ID ${posts_id} not found`);
+        return { success: false, message: 'Post not found' };
+      }
+    } catch (error) {
+      console.error('Error deleting post:', error);
+      throw error;
+    }
+  }
+  
   
 
 

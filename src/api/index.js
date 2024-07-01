@@ -8,6 +8,9 @@ import replies from './replies.api';
 import upload from './upload.api';
 import friends from './friends.api';
 import friendsrequests from './friends.requests.api';
+import groups from './groups.api';
+import members from './members.api';
+
 
 // 
 
@@ -23,6 +26,9 @@ app.use('/replies', replies);
 app.use('/upload', upload);
 app.use('/friends', friends);
 app.use('/friends-requests',friendsrequests);
+app.use('/groups', groups);
+app.use('/members', members);
+
 
 
 

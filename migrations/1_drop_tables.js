@@ -4,17 +4,17 @@ import { LoggerUtil } from '../src/utils';
 
 async function down(pg) {
   return await pg.schema
-  // .dropTableIfExists('friend_requests')
-  // .dropTableIfExists('friendships')
-  .dropTableIfExists('messages')
+  
+    .dropTableIfExists('group_messages')
+    .dropTableIfExists('group_members')
+    .dropTableIfExists('groups')
+    .dropTableIfExists('messages')
     .dropTableIfExists('replies')
     .dropTableIfExists('comments')
     .dropTableIfExists('posts')
     .dropTableIfExists('friend_requests')
     .dropTableIfExists('friendships')
     .dropTableIfExists('users')
-    
-  // .dropTableIfExists('user_post')
 
 
 }

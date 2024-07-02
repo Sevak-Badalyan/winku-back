@@ -1,6 +1,5 @@
 import { SuccessHandlerUtil } from "../utils";
 import { MembersService } from "../services"
-import { log } from "handlebars";
 
 export default class MembersController {
   static async getMembers(req, res, next) {             //im id ov stugel inch grupayum kam 

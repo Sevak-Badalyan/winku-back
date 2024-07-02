@@ -21,14 +21,5 @@ router.post('/',
     AuthMiddlaware.authenticateFor(["Admin", "User"]),
     UsersController.searchUsers );
   
-  
-// router.post('/', UsersController.addUsers );
-
-
-
-// router.delete('/:id', UsersController.deleteUsers );
-// router.put('/:id', UsersController.updateUsers );
-
-
 
 export default router

@@ -62,40 +62,4 @@ export default class PostsController {
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // static async deletePosts(req, res, next){
-    //   try {
-    //       const { id } = req.params;
-    //       const data = await PostsService.deletePosts(id);
-    //       SuccessHandlerUtil.handleList(res, req, data);
-    //   } catch (error) {
-    //       next(error)
-    //   }
-    // }
-
-    // static async updatePosts(req, res, next) {
-    //   try {
-    //       const {id} = req.params;
-    //       const {vernagir, nkar, gin} = req.body;
-    //       const data = await PostsService.updatePosts(id,{vernagir, nkar, gin});
-    //       SuccessHandlerUtil.handleUpdate(res, req, data);
-    //   } catch (error) {
-    //       next(error)
-    //   }
-    // }
-
 }

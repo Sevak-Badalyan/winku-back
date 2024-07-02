@@ -11,9 +11,7 @@ export default class FriendsRequestsService {
     static async addAnswerFriendsRequests(data) {
       return await FriendsRequestsModel.addAnswerFriendsRequests(data);
   }
-    // static async deleteFriendsRequests(request_id) {
-    //     return await FriendsRequestsModel.deleteFriendsRequests(request_id);
-    // }
+    
   
    
 }

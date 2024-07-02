@@ -9,10 +9,6 @@ router.get('/',
 AuthMiddlaware.authenticateFor(["Admin", "User"]),
 GroupsController.getGroups);
 
-// router.get('/message/:group_id', 
-//   AuthMiddlaware.authenticateFor(["Admin", "User"]),
-//   GroupsController.getGroupsMessages);
-
 
 router.post('/',                                                
 AuthMiddlaware.authenticateFor(["Admin", "User"]),

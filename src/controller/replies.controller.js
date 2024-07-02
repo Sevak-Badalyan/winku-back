@@ -38,29 +38,4 @@ export default class RepliesController {
 
 
 
-
-
-
-
-  // static async deleteReplies(req, res, next){
-  //   try {
-  //       const { id } = req.params;
-  //       const data = await RepliesService.deleteReplies(id);
-  //       SuccessHandlerUtil.handleList(res, req, data);
-  //   } catch (error) {
-  //       next(error)
-  //   }
-  // }
-
-  // static async updateReplies(req, res, next) {
-  //   try {
-  //       const {id} = req.params;
-  //       const {vernagir, nkar, gin} = req.body;
-  //       const data = await RepliesService.updateReplies(id,{vernagir, nkar, gin});
-  //       SuccessHandlerUtil.handleUpdate(res, req, data);
-  //   } catch (error) {
-  //       next(error)
-  //   }
-  // }
-
 }

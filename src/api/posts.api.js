@@ -46,15 +46,8 @@ AuthMiddlaware.authenticateFor(["Admin", "User"]),
  router.get('/photos/:user_id', 
   AuthMiddlaware.authenticateFor(["Admin", "User"]),
    PostsController.getPhotosById );
- 
-// router.get('/', PostsController.getComments );
-
-// router.get('/:id', PostsController.getidPosts );
 
 
-
-// router.delete('/:id', PostsController.deletePosts );
-// router.put('/:id', PostsController.updatePosts );
 
 
 

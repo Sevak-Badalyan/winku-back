@@ -1,4 +1,3 @@
-export {default as AddTableModel} from './addTable.model';
 export {default as UserModel} from './auth.model';
 export {default as PostsModel} from './posts.model';
 export {default as CommentsModel} from './comments.model';

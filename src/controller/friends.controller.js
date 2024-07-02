@@ -48,17 +48,6 @@ export default class FriendsController {
     }
   
 
-
-//   static async deleteFriends(req, res, next) {
-//     try {
-//       const {friendships_id } = req.params;
-//       const data = await FriendsService.deleteFriends(friendships_id);
-//       SuccessHandlerUtil.handleList(res, req, data);
-//     } catch (error) {
-//       next(error)
-//     }
-//   }
-
 static async deleteFriends(req, res, next) {
   try {
     
@@ -80,17 +69,7 @@ static async deleteFriends(req, res, next) {
 
 
 
-  // static async addFriends(req, res, next) {
 
-  //   try {
-
-  //     const {friendships_id, user_id,friend_id } = req.body;
-  //     const data = await FriendsService.addFriends({ friendships_id, user_id,friend_id});
-  //     SuccessHandlerUtil.handleList(res, req, data);
-  //   } catch (error) {
-  //     next(error)
-  //   }
-  // }
 
 
 

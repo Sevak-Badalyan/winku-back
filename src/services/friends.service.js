@@ -18,8 +18,5 @@ export default class FriendsService {
     static async deleteFriends({user_id, friend_id}) {
         return await FriendsModel.deleteFriends({user_id, friend_id});
     }
-   // static async addFriends(data) {
-    //     return await FriendsModel.addFriends(data);
-    // }
    
 }

@@ -1,5 +1,4 @@
 import express from 'express';
-import addTable from './addTable.api';
 import auth from './auth.api';
 import posts from './posts.api';
 import users from './users.api';
@@ -19,7 +18,6 @@ app.use(express.json());
 
 app.use('/auth', auth);
 app.use('/users', users);
-app.use('/addTable', addTable);
 app.use('/newsfeed', posts);
 app.use('/comments', comments);
 app.use('/replies', replies);

@@ -21,11 +21,6 @@ export default class PostsService {
     static async addPosts(data) {
         return await PostsModel.addPosts(data);
     }
-    // static async deletePosts(id) {
-    //     return await PostsModel.deletePosts(id);
-    // }
-    // static async updatePosts(id, update) {
-    //     return await PostsModel.updatePosts(id, update);
-    // }
+  
    
 }

@@ -41,26 +41,4 @@ export default class CommentsController {
 
 
 
-
-    // static async deleteComments(req, res, next){
-    //   try {
-    //       const { id } = req.params;
-    //       const data = await CommentsService.deleteComments(id);
-    //       SuccessHandlerUtil.handleList(res, req, data);
-    //   } catch (error) {
-    //       next(error)
-    //   }
-    // }
-
-    // static async updateComments(req, res, next) {
-    //   try {
-    //       const {id} = req.params;
-    //       const {vernagir, nkar, gin} = req.body;
-    //       const data = await CommentsService.updateComments(id,{vernagir, nkar, gin});
-    //       SuccessHandlerUtil.handleUpdate(res, req, data);
-    //   } catch (error) {
-    //       next(error)
-    //   }
-    // }
-
 }

@@ -21,9 +21,7 @@ AuthMiddlaware.authenticateFor(["Admin", "User"]),
    FriendsRequestsController.addAnswerFriendsRequests );
 
    
-   // router.delete('/:id',                                              //petqchi
-      // AuthMiddlaware.authenticateFor(["Admin", "User"]),
-      //    FriendsRequestsController.deleteFriendsRequests );
+  
       
 export default router;
 

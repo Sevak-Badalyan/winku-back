@@ -5,9 +5,7 @@ const router  = express.Router();
 router.get('/', 
 AuthMiddlaware.authenticateFor(["Admin", "User"]),
 CommentsController.getComments );
-// router.get('/', CommentsController.getComments );
 
-// router.get('/:id', CommentsController.getidComments );
 router.post('/',
 AuthMiddlaware.authenticateFor(["Admin", "User"]),
 

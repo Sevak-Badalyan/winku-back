@@ -17,12 +17,5 @@ export default class UsersService {
     static async searchUsers(data) {
         return await UsersModel.searchUsers(data)
     }
-
-    // static async deleteUsers(id) {
-    //     return await UsersModel.deleteUsers(id);
-    // }
-    // static async updateUsers(id, update) {
-    //     return await UsersModel.updateUsers(id, update);
-    // }
    
 }

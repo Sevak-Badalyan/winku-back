@@ -58,7 +58,7 @@ class FriendsModel extends Model {
     
 
     
-    static async getFriendsMessage(id) {                        //el petq chi
+    static async getFriendsMessage(id) {                        
         const data = await FriendsModel.query()
             .select(
                 'friendships.friendships_id',
@@ -75,7 +75,7 @@ class FriendsModel extends Model {
                 'messages.messages_id',
                 'messages.sender_id',
                 'messages.receiver_id',
-                'messages.message',  // corrected from 'msgText'
+                'messages.message',  
                 'messages.created_at as message_created_at',
                 'messages.updated_at as message_updated_at'
             )
@@ -223,9 +223,6 @@ class FriendsModel extends Model {
         }
     }
 
-    // static async addFriends(Data) {
-    //     const data = await this.query().insert(Data);
-    //     return data;
-    // }
+
 }
 export default FriendsModel;

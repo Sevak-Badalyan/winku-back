@@ -15,22 +15,6 @@ imageUploadMiddleware.upload(), (req, res) => {
   })
 
 
-
-//   router.post('/', imageUploadMiddleware.upload(), (req, res) => {
-//     res.status(200).json({ message: 'File uploaded successfully' });
-// });
-
-// router.post('/upload', upload.single('picture'), (req, res) => {
-//   try {
-//     res.send('File uploaded successfully');
-//   } catch (err) {
-//     res.status(400).send('Error uploading file');
-//   }
-// })
-
-
-
-
 export default router;
 
 

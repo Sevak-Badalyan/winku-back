@@ -1,4 +1,3 @@
-export {default as AddTableService} from './addTable.service';
 export {default as PostsService} from './posts.service';
 export {default as CommentsService} from './comments.service';
 export {default as RepliesService} from './replies.service';

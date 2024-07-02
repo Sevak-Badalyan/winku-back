@@ -37,13 +37,5 @@ export default class FriendsRequestsController {
       next(error)
     }
   }
-  // static async deleteFriendsRequests(req, res, next) {
-  //   try {
-  //     const {request_id } = req.params;
-  //     const data = await FriendsRequestsService.deleteFriendsRequests(request_id);
-  //     SuccessHandlerUtil.handleList(res, req, data);
-  //   } catch (error) {
-  //     next(error)
-  //   }
-  // }
+
 }

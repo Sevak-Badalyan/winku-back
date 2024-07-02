@@ -35,14 +35,6 @@ class MembersModel extends Model {
     }
 
 
-    // static async getMembers(group_id) {       //poxel nkar name stanal
-
-    //     const data = await MembersModel.query().select('*').where('group_id',group_id).orderBy('group_id')
-        
-    //     console.log(`userData ${data}`);
-    
-    //     return data;
-    // }
 
 
     static async getMembers(group_id) {
@@ -56,7 +48,6 @@ class MembersModel extends Model {
             .where('group_members.group_id', group_id)
             .orderBy('group_members.group_id');
     
-        // console.log(`userData ${data}`);
     
         return data;
     }
@@ -70,7 +61,6 @@ class MembersModel extends Model {
             .where('group_members.user_id', id)
             .orderBy('groups.group_id');
 
-        // console.log(`userData ${data}`);
         return data;
     }
     
@@ -105,16 +95,7 @@ class MembersModel extends Model {
 
 
    
-    // static async getGroupsMessages(group_id) {              //jisht
-    //     const data = await MembersModel.knex()
-    //         .select('group_messages.*')
-    //         .from('group_messages')
-    //         .where('group_messages.group_id', group_id)
-    //         .orderBy('group_messages.created_at');
 
-    //     // console.log(`groupMessages ${data}`);
-    //     return data;
-    // }
     static async getGroupsMessages(group_id) {
         const data = await MembersModel.knex()
             .select('group_messages.*', 'users.name', 'users.surname', 'users.profileImg')

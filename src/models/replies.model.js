@@ -41,10 +41,7 @@ class RepliesModel extends Model {
         return data;
     }
 
-    // static async addReplies(Data) {
-    //     const data = await this.query().insert(Data); 
-    //     return data;
-    // }
+   
     static async addReplies(data) {
         try {
           const insertedReply = await RepliesModel.query().insert(data);

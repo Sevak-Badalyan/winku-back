@@ -35,53 +35,13 @@ class UsersModel extends Model {
 
 
   static async getUsers() {                                                                 
-    const data = await UsersModel.query().select('*').orderBy('id'); // saxin stanum em
+    const data = await UsersModel.query().select('*').orderBy('id'); 
     
     console.log(`userData ${data}`);
 
     return data;
   }
 
-
-  // static currentOffset = 0; // Static property to keep track of the current offset
-  // static allUsers = []; // Static property to keep track of all users fetched so far
-
-  // static async getUsers() {
-  //   const limit = 3; // Number of users to fetch per call
-  //   const data = await UsersModel.query()
-  //     .select('*')
-  //     .orderBy('id')
-  //     .limit(limit)
-  //     .offset(this.currentOffset); // Use the current offset for pagination
-    
-  //   console.log(`Fetched users: ${data}`);
-    
-  //   // Update the list of all users fetched so far
-  //   this.allUsers = [...this.allUsers, ...data];
-    
-  //   // Increment the offset for the next call
-  //   this.currentOffset += limit;
-    
-  //   // Return the cumulative list of users
-  //   return this.allUsers;
-  // }
-
-  // static async getUsers() {
-
-  //   const limit = 3; 
-  //   const data = await UsersModel.query()
-  //     .select('*')
-  //     .orderBy('id')
-  //     .limit(limit)                                               //   limitov 3
-  //     .offset(this.currentOffset);
-    
-  //   console.log(`userData ${data}`);
-    
-  
-  //   this.currentOffset += limit;
-    
-  //   return data;
-  // }
  
 
 
@@ -136,10 +96,6 @@ static async searchUsers({ searchText }) {
 }
 
   
-  // static async addUsers(Data) {
-  //     const data = await this.query().insert(Data);
-  //     return data;
-  // }
 
 
 }

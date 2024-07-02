@@ -1,5 +1,4 @@
 import { Model } from 'objection';
-// import knex from 'knex';
 import knexConfigs from '../../knex.configs';
 
 
@@ -40,15 +39,6 @@ class uploadModel extends Model {
       return await this.query().patchAndFetchById(id, updateData);
   }
 
-
-//   static async updateImagePathPost(user_id, type, imagePath) {
-//     // const updateData = {};
-//     // updateData[type === 'posts'] = imagePath;
-//     // return await this.query().patchAndFetchById(user_id, updateData);
-//     const updateData = {};
-//     updateData[type] = imagePath; // Dynamically set the key based on the 'type'
-//     return await this.query().patchAndFetchById(user_id, updateData);
-// }
 
 }
 export default uploadModel;

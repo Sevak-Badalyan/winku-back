@@ -9,7 +9,7 @@ import friends from './friends.api';
 import friendsrequests from './friends.requests.api';
 import groups from './groups.api';
 import members from './members.api';
-
+import get from './get'
 
 // 
 
@@ -26,6 +26,7 @@ app.use('/friends', friends);
 app.use('/friends-requests',friendsrequests);
 app.use('/groups', groups);
 app.use('/members', members);
+app.use('/',get)
 
 
 

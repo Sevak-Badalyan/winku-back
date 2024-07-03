@@ -18,6 +18,7 @@ class PSQLStorage {
       PSQLStorage.knex = pg;
       LoggerUtil.info('PSQL Connected...');
     } catch (error) {
+    
       LoggerUtil.error(error.message);
     }
   }

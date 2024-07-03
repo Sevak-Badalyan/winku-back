@@ -55,8 +55,8 @@ class App {
   _setCors() {
     this.app.use(
       cors({
-        origin: process.env.CORS,
-        methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE'],
+        origin: process.env.CORS, // specify the origin
+        methods: ['GET', 'PUT', 'POST', 'PATCH', 'DELETE', 'OPTIONS'],
         allowedHeaders: ['Authorization', 'Content-Type', 'Origin'],
         credentials: true,
         optionsSuccessStatus: 200,
@@ -90,7 +90,7 @@ class App {
   _initializeApi() {
     this.app.use('/upload', express.static(path.join(__dirname, './storage/upload')));
     this.app.use('/api/v1', Api);
-    
+
   }
 
   /**

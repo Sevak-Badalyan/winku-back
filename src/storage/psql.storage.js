@@ -4,8 +4,6 @@ import knex from 'knex';
 import knexConfigs from '../../knex.configs';
 import { LoggerUtil } from '../utils';
 
-// NPM Modules
-
 class PSQLStorage {
   static async init() {
     try {
@@ -18,10 +16,10 @@ class PSQLStorage {
       PSQLStorage.knex = pg;
       LoggerUtil.info('PSQL Connected...');
     } catch (error) {
-    
-      LoggerUtil.error(error.message);
+      LoggerUtil.error(`Failed to connect to PSQL: ${error.message}`);
+      process.exit(1); // Exit the process if the connection fails
     }
   }
 }
 
-module.exports = PSQLStorage;
+export default PSQLStorage;

@@ -1,13 +1,9 @@
 import config from './src/config/variables.config';
 
 const { PSQL } = config;
-
-const {
-  PORT, HOST, DATABASE, USER, PASSWORD
-} = PSQL;
+const { PORT, HOST, DATABASE, USER, PASSWORD } = PSQL;
 
 export default {
-  
   development: {
     client: 'pg',
     useNullAsDefault: true,
@@ -17,7 +13,8 @@ export default {
       host: HOST,
       database: DATABASE,
       user: USER,
-      password: PASSWORD
+      password: PASSWORD,
+      ssl: { rejectUnauthorized: false }
     }
   },
 
@@ -29,7 +26,8 @@ export default {
       host: HOST,
       database: DATABASE,
       user: USER,
-      password: PASSWORD
+      password: PASSWORD,
+      ssl: { rejectUnauthorized: false }
     }
   }
 };

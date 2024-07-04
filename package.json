@@ -30,6 +30,7 @@
     "@babel/preset-env": "^7.20.2",
     "@joi/date": "^2.1.0",
     "@meanie/mongoose-to-json": "^2.6.0",
+    "@supabase/supabase-js": "^2.44.2",
     "babel": "^6.23.0",
     "babel-node": "^0.0.1-security",
     "babel-watch": "^7.8.1",

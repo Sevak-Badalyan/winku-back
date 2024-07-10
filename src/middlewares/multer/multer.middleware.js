@@ -86,53 +86,66 @@ class ImageUploadMiddleware {
         };
     }
 
+
+
+    
     static uploadPost() {
         const storage = multer.memoryStorage();
-
+    
         const upload = multer({ storage });
-
+    
         return (req, res, next) => {
             upload.single('postPhoto')(req, res, async err => {
                 if (err) {
                     return res.status(400).json({ error: err.message });
                 }
-
+    
                 const { user_id, postText } = req.body;
+    
                 if (!user_id) {
                     return res.status(400).json({ error: 'No user ID provided' });
                 }
-
+    
                 const file = req.file;
-                if (!file) {
-                    return res.status(400).json({ error: 'No file provided' });
+                let publicUrl = null;
+    
+                if (file) {
+                    const ext = extname(file.originalname).toLowerCase();
+                    const fileName = uuidv4() + ext;
+                    const filePath = `${user_id}/${fileName}`;
+    
+                    try {
+                        const { error: uploadError } = await supabase.storage
+                            .from('upload')
+                            .upload(filePath, file.buffer);
+    
+                        if (uploadError) {
+                            throw uploadError;
+                        }
+    
+                        const { data: { publicUrl: url }, error: publicUrlError } = supabase.storage
+                            .from('upload')
+                            .getPublicUrl(filePath);
+    
+                        if (publicUrlError) {
+                            throw publicUrlError;
+                        }
+    
+                        publicUrl = url;
+                    } catch (uploadError) {
+                        return res.status(500).json({ error: 'File upload failed' });
+                    }
                 }
-
-                const ext = extname(file.originalname).toLowerCase();
-                const fileName = uuidv4() + ext;
-                const filePath = `${user_id}/${fileName}`;
-
+    
                 try {
-                    const { error: uploadError } = await supabase.storage
-                        .from('upload')
-                        .upload(filePath, file.buffer);
-
-                    if (uploadError) {
-                        throw uploadError;
-                    }
-
-                    const { data: { publicUrl }, error: publicUrlError } = supabase.storage
-                        .from('upload')
-                        .getPublicUrl(filePath);
-
-                    if (publicUrlError) {
-                        throw publicUrlError;
-                    }
-
-                    await PostsModel.addPosts({
+                    const post = {
                         user_id: user_id,
-                        postText: postText,
-                        postPhoto: publicUrl
-                    });
+                        postText: postText || null,
+                        postPhoto: publicUrl || null
+                    };
+    
+                    await PostsModel.addPosts(post);
+    
                     res.json({ imagePath: publicUrl, postText });
                 } catch (dbError) {
                     return res.status(500).json({ error: 'Database update failed' });
@@ -140,10 +153,10 @@ class ImageUploadMiddleware {
             });
         };
     }
+    
 }
 
 export default ImageUploadMiddleware;
-
 
 
 
